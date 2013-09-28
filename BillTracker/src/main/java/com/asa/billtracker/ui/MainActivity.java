@@ -1,6 +1,5 @@
 package com.asa.billtracker.ui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -11,17 +10,21 @@ import com.asa.billtracker.Utils;
 import com.parse.ParseAnalytics;
 import com.parse.ParseUser;
 
-public class MainActivity extends Activity {
+public class MainActivity extends AsaBaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
+        setContentView(R.layout.activity_fragment_container);
         setupParse();
 
         if (isFinishing()) {
             return;
+        }
+
+
+        if (savedInstanceState == null) {
+            addFragment(FragmentBillsAll.newInstance(), FragmentBillsAll.TAG, false, false);
         }
     }
 
