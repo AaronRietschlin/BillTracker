@@ -1,9 +1,12 @@
 package com.asa.billtracker.ui;
 
+import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
@@ -56,5 +59,15 @@ public class FragmentBillsAll extends AsaBaseFragment {
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.bills, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_add:
+                startActivity(new Intent(mActivity, ActivityBillAdd.class));
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

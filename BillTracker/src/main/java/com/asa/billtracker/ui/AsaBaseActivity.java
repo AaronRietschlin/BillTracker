@@ -1,6 +1,7 @@
 package com.asa.billtracker.ui;
 
 import android.annotation.TargetApi;
+import android.app.ActionBar;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -26,6 +27,12 @@ public class AsaBaseActivity extends FragmentActivity {
 
     public void setActionBarProgressVisibility(boolean show){
         setProgressBarIndeterminateVisibility(show);
+    }
+
+    protected void setActionBarForNavigation(){
+        ActionBar ab = getActionBar();
+        ab.setDisplayHomeAsUpEnabled(true);
+        ab.setHomeButtonEnabled(true);
     }
 
 	/**

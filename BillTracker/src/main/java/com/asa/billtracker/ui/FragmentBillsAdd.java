@@ -6,24 +6,14 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
-import android.widget.TextView;
 
 import com.asa.billtracker.R;
-
-import butterknife.InjectView;
-import butterknife.Views;
 
 /**
  * Created by Aaron on 9/28/13.
  */
 public class FragmentBillsAdd extends AsaBaseFragment {
     public static final String TAG = "FragmentBillsAll";
-
-    @InjectView(R.id.bills_list)
-    ListView mList;
-    @InjectView(android.R.id.empty)
-    TextView mEmptyView;
 
     public FragmentBillsAdd() {
     }
@@ -41,15 +31,13 @@ public class FragmentBillsAdd extends AsaBaseFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_bills_all, container, false);
-        Views.inject(this, v);
+        View v = inflater.inflate(R.layout.fragment_bills_add, container, false);
         return v;
     }
 
     @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        mList.setEmptyView(mEmptyView);
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
     }
 
     @Override

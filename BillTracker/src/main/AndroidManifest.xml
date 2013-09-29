@@ -47,7 +47,13 @@
         <activity
             android:name="com.asa.billtracker.ui.ActivityLogin"
             android:label="@string/title_activity_activity_login" />
-        <meta-data android:name="com.crashlytics.ApiKey" android:value="b344c215b676a6a8d50a29caa377cc2b69f935d5"/>
+        <activity
+            android:name="com.asa.billtracker.ui.ActivityBillAdd"
+            android:label="@string/title_activity_activity_login" />
+
+        <meta-data
+            android:name="com.crashlytics.ApiKey"
+            android:value="b344c215b676a6a8d50a29caa377cc2b69f935d5" />
     </application>
 
 </manifest>
