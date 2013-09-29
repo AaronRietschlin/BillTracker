@@ -1,7 +1,7 @@
 package com.asa.billtracker.ui;
 
+import android.app.Activity;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.asa.billtracker.AppData;
 import com.asa.billtracker.R;
 
 import butterknife.InjectView;
@@ -65,9 +66,17 @@ public class FragmentBillsAll extends AsaBaseFragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_add:
-                startActivity(new Intent(mActivity, ActivityBillAdd.class));
+                startActivityForResult(new Intent(mActivity, ActivityBillAdd.class), AppData.ActivityResult.ADD_BILL);
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == Activity.RESULT_OK && requestCode == AppData.ActivityResult.ADD_BILL) {
+            // TODO  Reload
+        }
     }
 }

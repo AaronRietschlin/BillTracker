@@ -11,5 +11,9 @@ public class AppData {
 
     public static final String INTENT_BILL_ADDED = "com.asa.billtracker.INTENT_BILL_ADDED";
 
+    public static class ActivityResult{
+        public static final int ADD_BILL = 100;
+    }
+
 
 }
