@@ -71,7 +71,6 @@ public class FragmentBillsAdd extends AsaBaseFragment {
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
-        inflater.inflate(R.menu.bills, menu);
     }
 
     @OnClick(R.id.bills_add_btn_cancel)
