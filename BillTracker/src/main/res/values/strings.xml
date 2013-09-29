@@ -16,4 +16,7 @@
     <string name="login_error_email_req">You must enter an email.</string>
     <string name="login_error_password_req">You must enter a password.</string>
 
+    <!-- Bills List -->
+    <string name="bills_empty">Hooray! There are currently no bills!</string>
+
 </resources>

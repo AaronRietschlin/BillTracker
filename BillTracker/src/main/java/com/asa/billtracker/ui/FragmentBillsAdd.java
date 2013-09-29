@@ -17,7 +17,7 @@ import butterknife.Views;
 /**
  * Created by Aaron on 9/28/13.
  */
-public class FragmentBillsAll extends AsaBaseFragment {
+public class FragmentBillsAdd extends AsaBaseFragment {
     public static final String TAG = "FragmentBillsAll";
 
     @InjectView(R.id.bills_list)
@@ -25,11 +25,11 @@ public class FragmentBillsAll extends AsaBaseFragment {
     @InjectView(android.R.id.empty)
     TextView mEmptyView;
 
-    public FragmentBillsAll() {
+    public FragmentBillsAdd() {
     }
 
-    public static FragmentBillsAll newInstance() {
-        FragmentBillsAll frag = new FragmentBillsAll();
+    public static FragmentBillsAdd newInstance() {
+        FragmentBillsAdd frag = new FragmentBillsAdd();
         return frag;
     }
 

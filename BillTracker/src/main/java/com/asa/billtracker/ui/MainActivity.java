@@ -7,6 +7,7 @@ import android.view.MenuItem;
 
 import com.asa.billtracker.R;
 import com.asa.billtracker.Utils;
+import com.crashlytics.android.Crashlytics;
 import com.parse.ParseAnalytics;
 import com.parse.ParseUser;
 
@@ -15,6 +16,7 @@ public class MainActivity extends AsaBaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_fragment_container);
         setupParse();
 

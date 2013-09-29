@@ -8,4 +8,16 @@
     android:layout_marginTop="@dimen/activity_vertical_margin"
     android:orientation="vertical">
 
+    <ListView
+        android:id="@+id/bills_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <TextView
+        android:id="@android:id/empty"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="@string/bills_empty" />
+
 </LinearLayout>
