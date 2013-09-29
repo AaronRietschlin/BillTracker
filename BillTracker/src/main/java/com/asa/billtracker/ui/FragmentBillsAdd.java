@@ -2,6 +2,7 @@ package com.asa.billtracker.ui;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -13,6 +14,10 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.asa.billtracker.R;
+import com.asa.billtracker.model.Bill;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.SaveCallback;
 
 import butterknife.InjectView;
 import butterknife.OnClick;
@@ -23,7 +28,6 @@ import butterknife.Views;
  */
 public class FragmentBillsAdd extends AsaBaseFragment {
     public static final String TAG = "FragmentBillsAll";
-
     @InjectView(R.id.bills_add_spinner_category)
     Spinner mSpinnerCategories;
     @InjectView(R.id.bills_add_amount)
@@ -32,7 +36,6 @@ public class FragmentBillsAdd extends AsaBaseFragment {
     Button mBtnCancel;
     @InjectView(R.id.bills_add_btn_add_bill)
     Button mBtnAdd;
-
     private ArrayAdapter<CharSequence> mAdapter;
 
     public FragmentBillsAdd() {
@@ -81,7 +84,34 @@ public class FragmentBillsAdd extends AsaBaseFragment {
 
     @OnClick(R.id.bills_add_btn_add_bill)
     public void addClicked() {
-        mActivity.setResult(Activity.RESULT_OK);
-        mActivity.finish();
+        String amountStr = mFieldAmount.getText().toString();
+        if (TextUtils.isEmpty(amountStr)) {
+            return;
+        }
+        double amount = 0;
+        try {
+            amount = Double.valueOf(amountStr);
+        } catch (NumberFormatException e) {
+            return;
+        }
+        String category = (String) mSpinnerCategories.getSelectedItem();
+        category = category.toLowerCase();
+        Bill bill = new Bill();
+        bill.setCategory(category);
+        bill.setAmount(amount);
+
+        ParseObject o = bill.toParseObject();
+        o.saveInBackground(new SaveCallback() {
+            @Override
+            public void done(ParseException e) {
+                if(e == null){
+                    // TODO - Good!
+                    mActivity.setResult(Activity.RESULT_OK);
+                    mActivity.finish();
+                }else{
+                    // TODO - fail
+                }
+            }
+        });
     }
 }
