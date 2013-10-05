@@ -17,6 +17,8 @@ import com.asa.billtracker.R;
 
 import butterknife.InjectView;
 import butterknife.Views;
+import de.keyboardsurfer.android.widget.crouton.Crouton;
+import de.keyboardsurfer.android.widget.crouton.Style;
 
 /**
  * Created by Aaron on 9/28/13.
@@ -76,7 +78,7 @@ public class FragmentBillsAll extends AsaBaseFragment {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == Activity.RESULT_OK && requestCode == AppData.ActivityResult.ADD_BILL) {
-            // TODO  Reload
+            Crouton.makeText(mActivity, mActivity.getString(R.string.bill_add_result_success), Style.CONFIRM).show();
         }
     }
 }

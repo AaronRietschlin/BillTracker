@@ -15,6 +15,7 @@ import android.widget.Spinner;
 
 import com.asa.billtracker.R;
 import com.asa.billtracker.model.Bill;
+import com.asa.billtracker.utils.LogUtils;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.SaveCallback;
@@ -22,6 +23,8 @@ import com.parse.SaveCallback;
 import butterknife.InjectView;
 import butterknife.OnClick;
 import butterknife.Views;
+import de.keyboardsurfer.android.widget.crouton.Crouton;
+import de.keyboardsurfer.android.widget.crouton.Style;
 
 /**
  * Created by Aaron on 9/28/13.
@@ -101,15 +104,18 @@ public class FragmentBillsAdd extends AsaBaseFragment {
         bill.setAmount(amount);
 
         ParseObject o = bill.toParseObject();
+        mActivity.setActionBarProgressVisibility(true);
         o.saveInBackground(new SaveCallback() {
             @Override
             public void done(ParseException e) {
+                mActivity.setActionBarProgressVisibility(false);
                 if(e == null){
-                    // TODO - Good!
                     mActivity.setResult(Activity.RESULT_OK);
                     mActivity.finish();
+                    // TODO - manually add to the db so that there doesn't need to be a refresh
                 }else{
-                    // TODO - fail
+                    Crouton.makeText(mActivity, mActivity.getString(R.string.bill_add_result_failure), Style.ALERT).show();
+                    LogUtils.LOGE(TAG, "", e);
                 }
             }
         });

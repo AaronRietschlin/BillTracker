@@ -12,7 +12,8 @@
         android:id="@+id/login_field_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Email"
+        android:hint="@string/login_hint_email"
+        android:inputType="textEmailAddress"
         android:singleLine="true" />
 
     <EditText
@@ -20,7 +21,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:hint="Password"
+        android:inputType="text|textPassword"
+        android:hint="@string/login_hint_password"
         android:singleLine="true" />
 
     <LinearLayout

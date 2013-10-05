@@ -1,7 +1,10 @@
 package com.asa.billtracker.model;
 
 import com.asa.billtracker.AppData;
+import com.asa.billtracker.BillApplication;
+import com.parse.Parse;
 import com.parse.ParseObject;
+import com.parse.ParseUser;
 
 /**
  * Created by Aaron on 9/29/13.
@@ -11,7 +14,6 @@ public class Bill {
     private String objectId;
     private double amount;
     private String category;
-    private String house;
     private String image;
     private long createdAt;
     private long updatedAt;
@@ -20,10 +22,12 @@ public class Bill {
 
     public ParseObject toParseObject() {
         ParseObject o = new ParseObject(AppData.ParseTables.BILLS);
-        ParseObject category = new ParseObject(AppData.ParseTables.CATEGORY);
-        category.put("name", category);
-        o.put("category", category);
+        ParseObject categoryO = new ParseObject(AppData.ParseTables.CATEGORY);
+        categoryO.put("name", category);
+        o.put("category", categoryO);
         o.put("amount", amount);
+        o.put("owner", ParseUser.getCurrentUser());
+        o.put("debug", BillApplication.DEBUG);
         return o;
     }
 
@@ -49,14 +53,6 @@ public class Bill {
 
     public void setCategory(String category) {
         this.category = category;
-    }
-
-    public String getHouse() {
-        return house;
-    }
-
-    public void setHouse(String house) {
-        this.house = house;
     }
 
     public String getImage() {
