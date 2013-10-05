@@ -22,9 +22,7 @@ public class Bill {
 
     public ParseObject toParseObject() {
         ParseObject o = new ParseObject(AppData.ParseTables.BILLS);
-        ParseObject categoryO = new ParseObject(AppData.ParseTables.CATEGORY);
-        categoryO.put("name", category);
-        o.put("category", categoryO);
+        o.put("category", category);
         o.put("amount", amount);
         o.put("owner", ParseUser.getCurrentUser());
         o.put("debug", BillApplication.DEBUG);

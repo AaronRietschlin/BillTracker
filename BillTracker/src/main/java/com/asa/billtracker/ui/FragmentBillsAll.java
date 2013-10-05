@@ -1,6 +1,7 @@
 package com.asa.billtracker.ui;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,7 +14,15 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.asa.billtracker.AppData;
+import com.asa.billtracker.AsaBaseAdapter;
+import com.asa.billtracker.BillApplication;
 import com.asa.billtracker.R;
+import com.parse.FindCallback;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+
+import java.util.List;
 
 import butterknife.InjectView;
 import butterknife.Views;
@@ -25,11 +34,12 @@ import de.keyboardsurfer.android.widget.crouton.Style;
  */
 public class FragmentBillsAll extends AsaBaseFragment {
     public static final String TAG = "FragmentBillsAll";
-
     @InjectView(R.id.bills_list)
     ListView mList;
     @InjectView(android.R.id.empty)
     TextView mEmptyView;
+
+    private BillsAdapter mAdapter;
 
     public FragmentBillsAll() {
     }
@@ -62,6 +72,8 @@ public class FragmentBillsAll extends AsaBaseFragment {
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.bills, menu);
+        createAdapterIfNecessary();
+        getBills();
     }
 
     @Override
@@ -79,6 +91,69 @@ public class FragmentBillsAll extends AsaBaseFragment {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == Activity.RESULT_OK && requestCode == AppData.ActivityResult.ADD_BILL) {
             Crouton.makeText(mActivity, mActivity.getString(R.string.bill_add_result_success), Style.CONFIRM).show();
+            getBills();
         }
     }
+
+    private void getBills() {
+        ParseQuery<ParseObject> query = ParseQuery.getQuery(AppData.ParseTables.BILLS);
+        query.whereEqualTo("debug", BillApplication.DEBUG);
+        mActivity.setActionBarProgressVisibility(true);
+        query.findInBackground(new FindCallback<ParseObject>() {
+            @Override
+            public void done(List<ParseObject> parseObjects, ParseException e) {
+                if(e == null){
+                    createAdapterIfNecessary();
+                    mAdapter.addAll(parseObjects, true, true);
+                }else{
+                    Crouton.makeText(mActivity, "There was an error retrieving your bills! :(", Style.ALERT).show();
+                }
+                mActivity.setActionBarProgressVisibility(false);
+            }
+        });
+    }
+
+    private void createAdapterIfNecessary(){
+        if(mAdapter == null){
+            mAdapter = new BillsAdapter(mActivity);
+            mList.setAdapter(mAdapter);
+        }
+        if(mList.getAdapter() == null){
+            mList.setAdapter(mAdapter);
+        }
+    }
+
+    static class ViewHolder {
+        TextView amount;
+        TextView category;
+    }
+
+    private class BillsAdapter extends AsaBaseAdapter<ParseObject> {
+
+        public BillsAdapter(Context context) {
+            super(context);
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            ViewHolder holder = null;
+            if (convertView == null) {
+                convertView = mInflater.inflate(R.layout.item_bill, parent, false);
+                holder = new ViewHolder();
+                holder.amount = (TextView) convertView.findViewById(R.id.item_bill_tv_amount);
+                holder.category = (TextView) convertView.findViewById(R.id.item_bill_tv_category);
+                convertView.setTag(holder);
+            } else {
+                holder = (ViewHolder) convertView.getTag();
+            }
+
+            ParseObject o = items.get(position);
+            holder.amount.setText("$" + o.getNumber("amount"));
+            String categoryName = o.getString("category");
+            holder.category.setText(categoryName);
+
+            return convertView;
+        }
+    }
+
 }
