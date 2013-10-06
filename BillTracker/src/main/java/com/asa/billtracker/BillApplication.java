@@ -13,7 +13,7 @@ import com.parse.PushService;
  */
 public class BillApplication extends Application {
 
-    public static final boolean DEBUG = false;
+    public static final boolean DEBUG = true;
 
     @Override
     public void onCreate() {
