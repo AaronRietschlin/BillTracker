@@ -126,6 +126,7 @@ public class FragmentBillsAll extends AsaBaseFragment {
     static class ViewHolder {
         TextView amount;
         TextView category;
+        TextView date;
     }
 
     private class BillsAdapter extends AsaBaseAdapter<ParseObject> {
@@ -142,6 +143,7 @@ public class FragmentBillsAll extends AsaBaseFragment {
                 holder = new ViewHolder();
                 holder.amount = (TextView) convertView.findViewById(R.id.item_bill_tv_amount);
                 holder.category = (TextView) convertView.findViewById(R.id.item_bill_tv_category);
+                holder.date = (TextView) convertView.findViewById(R.id.item_bill_tv_date);
                 convertView.setTag(holder);
             } else {
                 holder = (ViewHolder) convertView.getTag();
