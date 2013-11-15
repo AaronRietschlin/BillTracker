@@ -14,7 +14,7 @@
         android:orientation="vertical">
 
         <EditText
-            android:id="@+id/login_field_email"
+            android:id="@+id/reg_field_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/login_hint_email"
@@ -22,7 +22,7 @@
             android:singleLine="true" />
 
         <EditText
-            android:id="@+id/login_field_password"
+            android:id="@+id/reg_field_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -30,21 +30,19 @@
             android:inputType="text|textPassword"
             android:singleLine="true" />
 
-        <TextView
-            android:id="@+id/login_btn_register"
-            android:layout_width="wrap_content"
-            style="?android:attr/buttonBarButtonStyle"
-            android:layout_gravity="center_horizontal"
-            android:paddingLeft="8dp"
-            android:layout_marginTop="16dp"
-            android:paddingRight="8dp"
-            android:text="@string/login_register"
-            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/reg_field_password_confirm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="@string/login_hint_password_confirm"
+            android:inputType="text|textPassword"
+            android:singleLine="true" />
 
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/login_layout_button"
+        android:id="@+id/reg_layout_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -69,17 +67,7 @@
                 android:visibility="gone" />
 
             <Button
-                android:id="@+id/login_btn_skip"
-                style="?android:attr/buttonBarButtonStyle"
-                android:layout_width="0dip"
-                android:layout_height="wrap_content"
-                android:layout_gravity="left"
-                android:layout_weight="1"
-                android:maxLines="2"
-                android:text="@string/login_skip" />
-
-            <Button
-                android:id="@+id/login_btn_login"
+                android:id="@+id/reg_btn_register"
                 style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="0dip"
                 android:layout_height="wrap_content"
@@ -87,7 +75,7 @@
                 android:layout_weight="1"
                 android:filterTouchesWhenObscured="true"
                 android:maxLines="2"
-                android:text="@string/login_login" />
+                android:text="@string/login_register" />
 
             <LinearLayout
                 android:id="@+id/rightSpacer"
@@ -98,5 +86,4 @@
                 android:visibility="gone" />
         </LinearLayout>
     </LinearLayout>
-
 </LinearLayout>

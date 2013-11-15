@@ -6,10 +6,8 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.asa.billtracker.R;
 import com.parse.LogInCallback;
@@ -20,28 +18,27 @@ import com.parse.SignUpCallback;
 import butterknife.InjectView;
 import butterknife.OnClick;
 import butterknife.Views;
-import de.keyboardsurfer.android.widget.crouton.Crouton;
-import de.keyboardsurfer.android.widget.crouton.Style;
 
 /**
- * Created by Aaron on 9/28/13.
+ * Created by aaron on 11/15/13.
  */
-public class FragmentLogin extends AsaBaseFragment {
-    public static final String TAG = "FragmentLogin";
-    @InjectView(R.id.login_btn_login)
-    Button mBtnLogin;
-    @InjectView(R.id.login_btn_register)
-    TextView mBtnRegister;
-    @InjectView(R.id.login_field_email)
-    EditText mFieldEmail;
-    @InjectView(R.id.login_field_password)
-    EditText mFieldPassword;
+public class FragmentRegister extends AsaBaseFragment {
+    public static final String TAG = "FragmentRegister";
 
-    public FragmentLogin() {
+    @InjectView(R.id.reg_btn_register)
+    TextView mBtnRegister;
+    @InjectView(R.id.reg_field_email)
+    EditText mFieldEmail;
+    @InjectView(R.id.reg_field_password)
+    EditText mFieldPassword;
+    @InjectView(R.id.reg_field_password_confirm)
+    EditText mFieldPasswordConfirm;
+
+    public FragmentRegister() {
     }
 
-    public static FragmentLogin newInstance() {
-        FragmentLogin frag = new FragmentLogin();
+    public static FragmentRegister newInstance() {
+        FragmentRegister frag = new FragmentRegister();
         return frag;
     }
 
@@ -53,7 +50,7 @@ public class FragmentLogin extends AsaBaseFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_login, container, false);
+        View v = inflater.inflate(R.layout.fragment_register, container, false);
         Views.inject(this, v);
 
         return v;
@@ -94,27 +91,23 @@ public class FragmentLogin extends AsaBaseFragment {
         });
     }
 
-    @OnClick(R.id.login_btn_register)
+    @OnClick(R.id.reg_btn_register)
     public void registerClicked() {
-        mActivity.replaceFragment(FragmentRegister.newInstance(), FragmentRegister.TAG, true, true);
-    }
-
-    @OnClick(R.id.login_btn_login)
-    public void loginClicked() {
         String email = mFieldEmail.getText().toString();
         String password = mFieldPassword.getText().toString();
-        if (checkIfCanProceed(email, password)) {
-            loginToParse(email, password);
+        String confirmPassword = mFieldPasswordConfirm.getText().toString();
+        if (checkIfCanProceed(email, password, confirmPassword)) {
+            registerToParse(email, password);
         }
     }
 
-    @OnClick(R.id.login_btn_skip)
-    public void skipClicked(){
-        Crouton.makeText(mActivity, "You chose to skip. Unfortunately, we can't do that yet.", Style.CONFIRM).show();
-    }
-
-    private boolean checkIfCanProceed(String email, String password) {
+    private boolean checkIfCanProceed(String email, String password, String confirmPassword) {
         View focusView = null;
+        // Check to make sure none of the fields are empty.
+        if (TextUtils.isEmpty(confirmPassword)) {
+            mFieldPasswordConfirm.setError(getString(R.string.login_error_password_confirm_req));
+            focusView = mFieldPasswordConfirm;
+        }
         if (TextUtils.isEmpty(password)) {
             mFieldPassword.setError(getString(R.string.login_error_password_req));
             focusView = mFieldPassword;
@@ -123,10 +116,17 @@ public class FragmentLogin extends AsaBaseFragment {
             mFieldEmail.setError(getString(R.string.login_error_email_req));
             focusView = mFieldEmail;
         }
+
+        if (!TextUtils.isEmpty(confirmPassword) && !TextUtils.isEmpty(password) && !TextUtils.equals(confirmPassword, password)) {
+            mFieldPassword.setError(getString(R.string.login_error_password_no_match));
+            focusView = mFieldPassword;
+        }
+
         if (focusView != null) {
             focusView.requestFocus();
             return false;
         }
         return true;
     }
+
 }

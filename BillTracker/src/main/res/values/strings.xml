@@ -17,8 +17,14 @@
     <!-- Login -->
     <string name="login_register">Register</string>
     <string name="login_login">Login</string>
+    <string name="login_skip">Skip</string>
     <string name="login_error_email_req">You must enter an email.</string>
     <string name="login_error_password_req">You must enter a password.</string>
+    <string name="login_error_password_confirm_req">You must confirm your password.</string>
+    <string name="login_error_password_no_match">Your passwords do not match!</string>
+    <string name="login_hint_email">Email</string>
+    <string name="login_hint_password">Password</string>
+    <string name="login_hint_password_confirm">Confirm Password</string>
 
     <!-- Bills List -->
     <string name="bills_empty">Hooray! There are currently no bills!</string>
@@ -33,8 +39,6 @@
     <string name="category_water">Water</string>
     <string name="category_rent">Rent</string>
     <string name="category_other">Other</string>
-    <string name="login_hint_email">Email</string>
-    <string name="login_hint_password">Password</string>
     <string name="bill_add_result_success">Bill was successfully added!</string>
     <string name="bill_add_result_failure">An error occurred uploading the bill. Please try again!</string>
 
