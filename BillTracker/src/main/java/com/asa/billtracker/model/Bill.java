@@ -17,6 +17,9 @@ public class Bill {
     private String image;
     private long createdAt;
     private long updatedAt;
+    /** This is the id of the {@link ParseUser} who created it.*/
+    private String ownerId;
+    private String ownerName;
 
     // TODO - Need to update this for the correct model of the parse db
 
@@ -75,5 +78,14 @@ public class Bill {
 
     public void setUpdatedAt(long updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public static class Category{
+        public static final String CABLE_INTERNET = "Cable/Internet";
+        public static final String RENT = "Rent";
+        public static final String OTHER = "Other";
+        public static final String WATER = "Water";
+        public static final String ELECTRIC = "Electric";
+        public static final String GAS = "Gas";
     }
 }

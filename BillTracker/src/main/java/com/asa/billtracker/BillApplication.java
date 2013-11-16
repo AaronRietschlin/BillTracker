@@ -26,6 +26,7 @@ public class BillApplication extends Application {
         // Enabling Push Notifications
         // TODO - Change this to the launch activity
         PushService.setDefaultPushCallback(this, MainActivity.class);
-        ParseInstallation.getCurrentInstallation().saveInBackground();
+        // TODO - Maybe don't use this
+//        ParseInstallation.getCurrentInstallation().saveInBackground();
     }
 }
