@@ -29,8 +29,8 @@ import de.keyboardsurfer.android.widget.crouton.Style;
 /**
  * Created by Aaron on 9/28/13.
  */
-public class FragmentJoinHouse extends AsaBaseFragment {
-    public static final String TAG = "FragmentJoinHouse";
+public class FragmentHouseJoin extends AsaBaseFragment {
+    public static final String TAG = "FragmentHouseJoin";
     @InjectView(R.id.btn_positive)
     Button mBtnJoin;
     @InjectView(R.id.btn_negative)
@@ -42,11 +42,11 @@ public class FragmentJoinHouse extends AsaBaseFragment {
 
     private int mFromWhereItCame;
 
-    public FragmentJoinHouse() {
+    public FragmentHouseJoin() {
     }
 
-    public static FragmentJoinHouse newInstance(int from) {
-        FragmentJoinHouse frag = new FragmentJoinHouse();
+    public static FragmentHouseJoin newInstance(int from) {
+        FragmentHouseJoin frag = new FragmentHouseJoin();
         Bundle args = new Bundle();
         args.putInt(AppData.Extras.HOUSE_FROM, from);
         frag.setArguments(args);

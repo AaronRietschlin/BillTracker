@@ -32,7 +32,7 @@ public class ActivityHouse extends AsaBaseActivity {
             if (houseType == AppData.HOUSE_TYPE_ADD) {
 //            addFragment(FragmentLogin.newInstance(), FragmentLogin.TAG, false, false);
             } else if (houseType == AppData.HOUSE_TYPE_JOIN) {
-                addFragment(FragmentJoinHouse.newInstance(houseFrom), FragmentLogin.TAG, false, false);
+                addFragment(FragmentHouseJoin.newInstance(houseFrom), FragmentLogin.TAG, false, false);
             }
         }
     }
