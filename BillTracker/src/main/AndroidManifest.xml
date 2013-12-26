@@ -47,8 +47,13 @@
         <activity
             android:name=".ui.start.ActivityLogin"
             android:label="@string/title_activity_activity_login" />
+
         <activity
             android:name="com.asa.billtracker.ui.ActivityBillAdd"
+            android:label="@string/title_activity_activity_login" />
+
+        <activity
+            android:name="com.asa.billtracker.ui.start.ActivityHouse"
             android:label="@string/title_activity_activity_login" />
 
         <meta-data

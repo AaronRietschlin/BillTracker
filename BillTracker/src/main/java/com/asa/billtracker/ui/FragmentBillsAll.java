@@ -17,6 +17,7 @@ import com.asa.billtracker.AppData;
 import com.asa.billtracker.AsaBaseAdapter;
 import com.asa.billtracker.BillApplication;
 import com.asa.billtracker.R;
+import com.asa.billtracker.ui.start.ActivityHouse;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
@@ -81,6 +82,13 @@ public class FragmentBillsAll extends AsaBaseFragment {
         switch (item.getItemId()) {
             case R.id.action_add:
                 startActivityForResult(new Intent(mActivity, ActivityBillAdd.class), AppData.ActivityResult.ADD_BILL);
+                return true;
+            case R.id.action_add_house:
+                // TODO - Do this
+                break;
+            case R.id.action_join_house:
+                Intent joinHouseIntent = ActivityHouse.createLaunchIntent(mActivity, AppData.HOUSE_FROM_MAIN, AppData.HOUSE_TYPE_JOIN);
+                startActivity(joinHouseIntent);
                 return true;
         }
         return super.onOptionsItemSelected(item);

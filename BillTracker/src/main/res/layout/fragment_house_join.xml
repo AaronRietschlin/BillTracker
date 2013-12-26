@@ -38,7 +38,7 @@
             android:layout_marginTop="16dp"
             android:paddingLeft="8dp"
             android:paddingRight="8dp"
-            android:text="@string/house_add" />
+            android:text="@string/house_add_with_plus" />
     </LinearLayout>
 
     <View

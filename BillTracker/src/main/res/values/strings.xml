@@ -28,9 +28,14 @@
     <string name="login_hint_password_confirm">Confirm Password</string>
 
     <!-- House -->
-    <string name="house_add">+ Add House</string>
+    <string name="house_add">Add House</string>
+    <string name="house_add_with_plus">+ Add House</string>
     <string name="house_id">House Id</string>
     <string name="house_join_description">If you would like to join a house, please enter the code for that house below!</string>
+    <string name="house_join">Join House</string>
+    <string name="house_join_field_error">You must enter in a house ID.</string>
+    <string name="house_error_no_houses_found">No House with the given ID was found.</string>
+    <string name="house_error_occurred">An error occurred trying to find the requested House. Please try again.</string>
 
     <!-- Bills List -->
     <string name="bills_empty">Hooray! There are currently no bills!</string>
