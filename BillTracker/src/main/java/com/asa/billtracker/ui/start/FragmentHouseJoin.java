@@ -86,6 +86,12 @@ public class FragmentHouseJoin extends AsaBaseFragment {
         mFieldId.setText("V35BYB9cRX");
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        mActivity.setTitle(R.string.title_house_join);
+    }
+
     @OnClick(R.id.btn_positive)
     public void onJoinClicked() {
         String id = mFieldId.getText().toString();
@@ -103,7 +109,7 @@ public class FragmentHouseJoin extends AsaBaseFragment {
             public void done(List<ParseObject> parseObjects, ParseException e) {
                 mActivity.setActionBarProgressVisibility(false);
                 if (e == null) {
-                    if(parseObjects == null || parseObjects.size() == 0){
+                    if (parseObjects == null || parseObjects.size() == 0) {
                         Crouton.makeText(mActivity, R.string.house_error_no_houses_found, Style.ALERT).show();
                         return;
                     }

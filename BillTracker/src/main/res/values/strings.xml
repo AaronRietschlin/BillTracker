@@ -28,6 +28,8 @@
     <string name="login_hint_password_confirm">Confirm Password</string>
 
     <!-- House -->
+    <string name="title_house_join">Join a House</string>
+    <string name="title_house_create">Create a House</string>
     <string name="house_add">Add House</string>
     <string name="house_add_with_plus">+ Add House</string>
     <string name="house_id">House Id</string>

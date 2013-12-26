@@ -10,7 +10,7 @@ import com.asa.billtracker.ui.AsaBaseActivity;
 
 public class ActivityHouse extends AsaBaseActivity {
 
-    public static Intent createLaunchIntent(Context context, int from, int type){
+    public static Intent createLaunchIntent(Context context, int from, int type) {
         Intent intent = new Intent(context, ActivityHouse.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent.putExtra(AppData.Extras.HOUSE_FROM, from);
@@ -30,7 +30,7 @@ public class ActivityHouse extends AsaBaseActivity {
 
         if (savedInstanceState == null) {
             if (houseType == AppData.HOUSE_TYPE_ADD) {
-//            addFragment(FragmentLogin.newInstance(), FragmentLogin.TAG, false, false);
+                addFragment(FragmentHouseCreate.newInstance(houseFrom), FragmentLogin.TAG, false, false);
             } else if (houseType == AppData.HOUSE_TYPE_JOIN) {
                 addFragment(FragmentHouseJoin.newInstance(houseFrom), FragmentLogin.TAG, false, false);
             }

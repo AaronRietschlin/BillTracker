@@ -25,8 +25,8 @@ import com.parse.ParseQuery;
 
 import java.util.List;
 
-import butterknife.InjectView;
 import butterknife.ButterKnife;
+import butterknife.InjectView;
 import de.keyboardsurfer.android.widget.crouton.Crouton;
 import de.keyboardsurfer.android.widget.crouton.Style;
 
@@ -84,7 +84,8 @@ public class FragmentBillsAll extends AsaBaseFragment {
                 startActivityForResult(new Intent(mActivity, ActivityBillAdd.class), AppData.ActivityResult.ADD_BILL);
                 return true;
             case R.id.action_add_house:
-                // TODO - Do this
+                Intent addHouseIntent = ActivityHouse.createLaunchIntent(mActivity, AppData.HOUSE_FROM_MAIN, AppData.HOUSE_TYPE_ADD);
+                startActivity(addHouseIntent);
                 break;
             case R.id.action_join_house:
                 Intent joinHouseIntent = ActivityHouse.createLaunchIntent(mActivity, AppData.HOUSE_FROM_MAIN, AppData.HOUSE_TYPE_JOIN);
@@ -110,10 +111,10 @@ public class FragmentBillsAll extends AsaBaseFragment {
         query.findInBackground(new FindCallback<ParseObject>() {
             @Override
             public void done(List<ParseObject> parseObjects, ParseException e) {
-                if(e == null){
+                if (e == null) {
                     createAdapterIfNecessary();
                     mAdapter.addAll(parseObjects, true, true);
-                }else{
+                } else {
                     Crouton.makeText(mActivity, "There was an error retrieving your bills! :(", Style.ALERT).show();
                 }
                 mActivity.setActionBarProgressVisibility(false);
@@ -121,12 +122,12 @@ public class FragmentBillsAll extends AsaBaseFragment {
         });
     }
 
-    private void createAdapterIfNecessary(){
-        if(mAdapter == null){
+    private void createAdapterIfNecessary() {
+        if (mAdapter == null) {
             mAdapter = new BillsAdapter(mActivity);
             mList.setAdapter(mAdapter);
         }
-        if(mList.getAdapter() == null){
+        if (mList.getAdapter() == null) {
             mList.setAdapter(mAdapter);
         }
     }

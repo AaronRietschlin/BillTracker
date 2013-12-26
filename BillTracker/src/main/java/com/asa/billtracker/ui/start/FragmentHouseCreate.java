@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.asa.billtracker.AppData;
 import com.asa.billtracker.R;
 import com.asa.billtracker.model.House;
 import com.asa.billtracker.ui.AsaBaseFragment;
@@ -35,14 +36,30 @@ public class FragmentHouseCreate extends AsaBaseFragment {
     @InjectView(R.id.btn_negative)
     Button mBtnSkip;
 
-    public static FragmentHouseCreate newInstance() {
+    private int mFromWhereItCame;
+
+    public static FragmentHouseCreate newInstance(int from) {
         FragmentHouseCreate frag = new FragmentHouseCreate();
+        Bundle args = new Bundle();
+        args.putInt(AppData.Extras.HOUSE_FROM, from);
+        frag.setArguments(args);
         return frag;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Bundle args = getArguments();
+        if (args == null) {
+            throw new IllegalStateException("You must pass where this fragment was entered from.");
+        }
+
+        mFromWhereItCame = args.getInt(AppData.Extras.HOUSE_FROM, -1);
+
+        if (mFromWhereItCame == -1) {
+            throw new IllegalStateException("You must pass where this fragment was entered from.");
+        }
     }
 
     @Override
@@ -50,6 +67,14 @@ public class FragmentHouseCreate extends AsaBaseFragment {
         View v = inflater.inflate(R.layout.fragment_house_create, container, false);
         ButterKnife.inject(this, v);
         return v;
+    }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        if(mFromWhereItCame == AppData.HOUSE_FROM_MAIN){
+            mBtnSkip.setVisibility(View.GONE);
+        }
     }
 
     @Override
