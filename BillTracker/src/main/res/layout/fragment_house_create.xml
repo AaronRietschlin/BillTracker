@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/house_create_field_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/house_create_hint_name"
+            android:inputType="textCapWords"
+            android:singleLine="true" />
+
+        <EditText
+            android:id="@+id/house_create_field_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="@string/house_create_hint_address"
+            android:inputType="text|textPostalAddress|textCapWords"
+            android:singleLine="true" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/house_create_layout_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:divider="?android:attr/dividerHorizontal"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/button_bar_padding_top"
+        android:showDividers="beginning">
+
+        <LinearLayout
+            style="?android:attr/buttonBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:measureWithLargestChild="true"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/leftSpacer"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.25"
+                android:orientation="horizontal"
+                android:visibility="gone" />
+
+
+            <Button
+                android:id="@+id/create_house_btn_login"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_weight="1"
+                android:filterTouchesWhenObscured="true"
+                android:maxLines="2"
+                android:text="@string/house_create_btn_create" />
+
+            <LinearLayout
+                android:id="@+id/rightSpacer"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.25"
+                android:orientation="horizontal"
+                android:visibility="gone" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
