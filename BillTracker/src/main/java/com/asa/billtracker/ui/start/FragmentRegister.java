@@ -1,4 +1,4 @@
-package com.asa.billtracker.ui;
+package com.asa.billtracker.ui.start;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +10,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.asa.billtracker.R;
+import com.asa.billtracker.Utils;
+import com.asa.billtracker.ui.AsaBaseFragment;
+import com.asa.billtracker.ui.MainActivity;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
@@ -25,8 +28,10 @@ import butterknife.Views;
 public class FragmentRegister extends AsaBaseFragment {
     public static final String TAG = "FragmentRegister";
 
-    @InjectView(R.id.reg_btn_register)
+    @InjectView(R.id.btn_positive)
     TextView mBtnRegister;
+    @InjectView(R.id.btn_negative)
+    TextView mBtnNegative;
     @InjectView(R.id.reg_field_email)
     EditText mFieldEmail;
     @InjectView(R.id.reg_field_password)
@@ -54,6 +59,13 @@ public class FragmentRegister extends AsaBaseFragment {
         Views.inject(this, v);
 
         return v;
+    }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        mBtnNegative.setVisibility(View.GONE);
+        mBtnRegister.setText(R.string.login_register);
     }
 
     private void registerToParse(String email, String password) {
@@ -91,7 +103,7 @@ public class FragmentRegister extends AsaBaseFragment {
         });
     }
 
-    @OnClick(R.id.reg_btn_register)
+    @OnClick(R.id.btn_positive)
     public void registerClicked() {
         String email = mFieldEmail.getText().toString();
         String password = mFieldPassword.getText().toString();

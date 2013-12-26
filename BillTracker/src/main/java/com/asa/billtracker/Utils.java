@@ -3,7 +3,7 @@ package com.asa.billtracker;
 import android.app.Activity;
 import android.content.Intent;
 
-import com.asa.billtracker.ui.ActivityLogin;
+import com.asa.billtracker.ui.start.ActivityLogin;
 import com.parse.ParseUser;
 
 /**

@@ -1,9 +1,9 @@
-package com.asa.billtracker.ui;
+package com.asa.billtracker.ui.start;
 
 import android.os.Bundle;
-import android.support.v4.app.FragmentTabHost;
 
 import com.asa.billtracker.R;
+import com.asa.billtracker.ui.AsaBaseActivity;
 
 public class ActivityLogin extends AsaBaseActivity {
 

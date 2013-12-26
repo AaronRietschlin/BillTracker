@@ -13,6 +13,7 @@
 
     <!-- Misc -->
     <string name="btn_cancel">Cancel</string>
+    <string name="btn_join">Join</string>
 
     <!-- Login -->
     <string name="login_register">Register</string>
@@ -25,6 +26,11 @@
     <string name="login_hint_email">Email</string>
     <string name="login_hint_password">Password</string>
     <string name="login_hint_password_confirm">Confirm Password</string>
+
+    <!-- House -->
+    <string name="house_add">+ Add House</string>
+    <string name="house_id">House Id</string>
+    <string name="house_join_description">If you would like to join a house, please enter the code for that house below!</string>
 
     <!-- Bills List -->
     <string name="bills_empty">Hooray! There are currently no bills!</string>

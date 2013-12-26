@@ -1,4 +1,4 @@
-package com.asa.billtracker.ui;
+package com.asa.billtracker.ui.start;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,9 +9,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.asa.billtracker.R;
+import com.asa.billtracker.ui.AsaBaseFragment;
+import com.asa.billtracker.ui.MainActivity;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
@@ -28,8 +29,10 @@ import de.keyboardsurfer.android.widget.crouton.Style;
  */
 public class FragmentLogin extends AsaBaseFragment {
     public static final String TAG = "FragmentLogin";
-    @InjectView(R.id.login_btn_login)
+    @InjectView(R.id.btn_positive)
     Button mBtnLogin;
+    @InjectView(R.id.btn_negative)
+    Button mBtnSkip;
     @InjectView(R.id.login_btn_register)
     TextView mBtnRegister;
     @InjectView(R.id.login_field_email)
@@ -57,6 +60,12 @@ public class FragmentLogin extends AsaBaseFragment {
         Views.inject(this, v);
 
         return v;
+    }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        mBtnLogin.setText(R.string.login_login);
     }
 
     private void registerToParse(String email, String password) {
@@ -99,7 +108,7 @@ public class FragmentLogin extends AsaBaseFragment {
         mActivity.replaceFragment(FragmentRegister.newInstance(), FragmentRegister.TAG, true, true);
     }
 
-    @OnClick(R.id.login_btn_login)
+    @OnClick(R.id.btn_positive)
     public void loginClicked() {
         String email = mFieldEmail.getText().toString();
         String password = mFieldPassword.getText().toString();
@@ -108,7 +117,7 @@ public class FragmentLogin extends AsaBaseFragment {
         }
     }
 
-    @OnClick(R.id.login_btn_skip)
+    @OnClick(R.id.btn_negative)
     public void skipClicked(){
         Crouton.makeText(mActivity, "You chose to skip. Unfortunately, we can't do that yet.", Style.CONFIRM).show();
     }

@@ -26,4 +26,7 @@
         <item name="android:layout_marginRight">@dimen/activity_horizontal_margin</item>
     </style>
 
+    <style name="TextAppearance.Bill" parent="android:TextAppearance.Holo"/>
+
+
 </resources>
