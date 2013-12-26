@@ -1,6 +1,5 @@
 package com.asa.billtracker.model;
 
-
 import android.content.ContentValues;
 
 import com.asa.billtracker.AppData;
