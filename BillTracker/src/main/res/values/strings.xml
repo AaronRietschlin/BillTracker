@@ -36,6 +36,11 @@
     <string name="house_join_field_error">You must enter in a house ID.</string>
     <string name="house_error_no_houses_found">No House with the given ID was found.</string>
     <string name="house_error_occurred">An error occurred trying to find the requested House. Please try again.</string>
+    <string name="house_create_btn_create">Create</string>
+    <string name="house_create_hint_name">House Name</string>
+    <string name="house_create_hint_address">Address</string>
+    <string name="house_create_error_address_req">You must add an address for the name.</string>
+    <string name="house_create_error_name_req">You must add a name for the name.</string>
 
     <!-- Bills List -->
     <string name="bills_empty">Hooray! There are currently no bills!</string>

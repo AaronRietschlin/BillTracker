@@ -16,9 +16,9 @@ import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.SaveCallback;
 
+import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
-import butterknife.Views;
 import de.keyboardsurfer.android.widget.crouton.Crouton;
 import de.keyboardsurfer.android.widget.crouton.Style;
 
@@ -32,7 +32,7 @@ public class FragmentHouseCreate extends AsaBaseFragment {
     EditText mFieldName;
     @InjectView(R.id.house_create_field_address)
     EditText mFieldAddress;
-    @InjectView(R.id.create_house_btn_login)
+    @InjectView(R.id.btn_negative)
     Button mBtnSkip;
 
     public static FragmentHouseCreate newInstance() {
@@ -48,7 +48,7 @@ public class FragmentHouseCreate extends AsaBaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_house_create, container, false);
-        Views.inject(this, v);
+        ButterKnife.inject(this, v);
         return v;
     }
 
@@ -58,7 +58,7 @@ public class FragmentHouseCreate extends AsaBaseFragment {
         mActivity.setTitle(R.string.title_house_create);
     }
 
-    @OnClick(R.id.create_house_btn_login)
+    @OnClick(R.id.btn_positive)
     public void createClicked() {
         if (!isAdded()) {
             return;
