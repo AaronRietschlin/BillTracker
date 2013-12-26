@@ -10,7 +10,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.asa.billtracker.R;
-import com.asa.billtracker.Utils;
 import com.asa.billtracker.ui.AsaBaseFragment;
 import com.asa.billtracker.ui.MainActivity;
 import com.parse.LogInCallback;
@@ -18,9 +17,9 @@ import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
 
+import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
-import butterknife.Views;
 
 /**
  * Created by aaron on 11/15/13.
@@ -56,7 +55,7 @@ public class FragmentRegister extends AsaBaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_register, container, false);
-        Views.inject(this, v);
+        ButterKnife.inject(this, v);
 
         return v;
     }

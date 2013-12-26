@@ -32,7 +32,7 @@ android {
 
 dependencies {
 	compile 'com.android.support:appcompat-v7:18.0.0'
-    compile 'com.jakewharton:butterknife:3.0.0'
+    compile 'com.jakewharton:butterknife:4.0.0'
     compile ('de.keyboardsurfer.android.widget:crouton:1.8.1'){
         exclude module: 'support-v4'
     }

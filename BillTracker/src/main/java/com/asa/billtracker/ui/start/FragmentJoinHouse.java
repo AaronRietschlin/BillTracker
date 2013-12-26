@@ -1,8 +1,6 @@
 package com.asa.billtracker.ui.start;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,17 +10,9 @@ import android.widget.TextView;
 
 import com.asa.billtracker.R;
 import com.asa.billtracker.ui.AsaBaseFragment;
-import com.asa.billtracker.ui.MainActivity;
-import com.parse.LogInCallback;
-import com.parse.ParseException;
-import com.parse.ParseUser;
-import com.parse.SignUpCallback;
 
+import butterknife.ButterKnife;
 import butterknife.InjectView;
-import butterknife.OnClick;
-import butterknife.Views;
-import de.keyboardsurfer.android.widget.crouton.Crouton;
-import de.keyboardsurfer.android.widget.crouton.Style;
 
 /**
  * Created by Aaron on 9/28/13.
@@ -52,7 +42,7 @@ public class FragmentJoinHouse extends AsaBaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_house_join, container, false);
-        Views.inject(this, v);
+        ButterKnife.inject(this, v);
 
         return v;
     }

@@ -25,7 +25,7 @@ import com.parse.ParseQuery;
 import java.util.List;
 
 import butterknife.InjectView;
-import butterknife.Views;
+import butterknife.ButterKnife;
 import de.keyboardsurfer.android.widget.crouton.Crouton;
 import de.keyboardsurfer.android.widget.crouton.Style;
 
@@ -58,7 +58,7 @@ public class FragmentBillsAll extends AsaBaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_bills_all, container, false);
-        Views.inject(this, v);
+        ButterKnife.inject(this, v);
         return v;
     }
 
